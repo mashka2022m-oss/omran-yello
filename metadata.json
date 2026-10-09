@@ -1,0 +1,7 @@
+{
+  "name": "منظومة عمران لإدارة الحلقات والمجمعات القرآنية",
+  "description": "منصة متقدمة وشاملة لإدارة المجمعات والحلقات القرآنية ومتابعة الحفظ والتقييم واختبارات التجويد",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

@@ -1,0 +1,688 @@
+@import "tailwindcss";
+
+:root {
+  /* Duolingo Core Theme CSS Custom Properties (Yellow / Gold Primary Accent) */
+  --complex-primary: #131f24;
+  --complex-primary-rgb: 19, 31, 36;
+  --complex-secondary: #1b2e35;
+  --complex-secondary-rgb: 27, 46, 53;
+  --complex-accent: #ffc800;
+  --complex-accent-rgb: 255, 200, 0;
+  --complex-bg: #131f24;
+  --complex-bg-rgb: 19, 31, 36;
+  --complex-card: #203843;
+  --complex-card-rgb: 32, 56, 67;
+  --complex-border: #2b4550;
+  --complex-border-rgb: 43, 69, 80;
+  --complex-text: #ffffff;
+  --complex-subtext: #ffd233;
+  --complex-subtext-rgb: 255, 210, 51;
+
+  /* Duolingo Official Color Palette Tokens */
+  --duo-yellow: #ffc800;
+  --duo-yellow-shadow: #e5a500;
+  --duo-yellow-light: #fff5d6;
+  --duo-green: #58cc02;
+  --duo-green-shadow: #46a302;
+  --duo-green-light: #d7ffb8;
+  --duo-blue: #1cb0f6;
+  --duo-blue-shadow: #1899d6;
+  --duo-blue-light: #ddf4ff;
+  --duo-orange: #ff9600;
+  --duo-orange-shadow: #e68300;
+  --duo-red: #ff4b4b;
+  --duo-red-shadow: #ea2b2b;
+  --duo-purple: #ce82ff;
+  --duo-purple-shadow: #a558dc;
+  --duo-dark-bg: #131f24;
+  --duo-card-bg: #203843;
+  --duo-card-border: #2b4550;
+  --duo-card-shadow: #182830;
+}
+
+@layer base {
+  html, body {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden !important;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #root {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden !important;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  body {
+    font-family: 'Tajawal', 'Cairo', 'Almarai', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--complex-bg, #131f24);
+    color: var(--complex-text, #ffffff);
+    letter-spacing: -0.01em;
+  }
+  
+  .font-quran {
+    font-family: 'Amiri', serif;
+  }
+  
+  .font-heading {
+    font-family: 'Tajawal', 'Cairo', 'Almarai', sans-serif;
+    font-weight: 800;
+  }
+}
+
+/* ========================================================================= */
+/* UNIVERSAL DUOLINGO 3D TACTILE BUTTONS & CARDS DESIGN SYSTEM               */
+/* ========================================================================= */
+
+/* Tactile 3D pushable button base applied universally */
+button,
+a.btn,
+.btn-3d {
+  position: relative;
+  font-weight: 800;
+  border-radius: 1rem;
+  transition: transform 0.08s ease, filter 0.12s ease, border-bottom-width 0.08s ease;
+  user-select: none;
+}
+
+button:active:not(:disabled),
+a.btn:active:not(:disabled) {
+  transform: translateY(2px) !important;
+}
+
+/* Specific Duolingo 3D Button Utility Classes */
+.duo-btn-yellow,
+.duo-btn-primary {
+  background-color: #ffc800 !important;
+  border: 2px solid #ffc800 !important;
+  border-bottom: 4px solid #e5a500 !important;
+  color: #131f24 !important;
+  font-weight: 800 !important;
+  border-radius: 1rem !important;
+}
+.duo-btn-yellow:hover:not(:disabled),
+.duo-btn-primary:hover:not(:disabled) {
+  filter: brightness(1.06);
+}
+.duo-btn-yellow:active:not(:disabled),
+.duo-btn-primary:active:not(:disabled) {
+  border-bottom-width: 2px !important;
+}
+
+.duo-btn-green {
+  background-color: #58cc02 !important;
+  border: 2px solid #58cc02 !important;
+  border-bottom: 4px solid #46a302 !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  border-radius: 1rem !important;
+}
+.duo-btn-green:hover:not(:disabled) {
+  filter: brightness(1.06);
+}
+.duo-btn-green:active:not(:disabled) {
+  border-bottom-width: 2px !important;
+}
+
+.duo-btn-blue {
+  background-color: #1cb0f6 !important;
+  border: 2px solid #1cb0f6 !important;
+  border-bottom: 4px solid #1899d6 !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  border-radius: 1rem !important;
+}
+.duo-btn-blue:hover:not(:disabled) {
+  filter: brightness(1.06);
+}
+.duo-btn-blue:active:not(:disabled) {
+  border-bottom-width: 2px !important;
+}
+
+.duo-btn-red {
+  background-color: #ff4b4b !important;
+  border: 2px solid #ff4b4b !important;
+  border-bottom: 4px solid #ea2b2b !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  border-radius: 1rem !important;
+}
+.duo-btn-red:hover:not(:disabled) {
+  filter: brightness(1.06);
+}
+.duo-btn-red:active:not(:disabled) {
+  border-bottom-width: 2px !important;
+}
+
+.duo-btn-dark {
+  background-color: #203843 !important;
+  border: 2px solid #2b4550 !important;
+  border-bottom: 4px solid #16262e !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  border-radius: 1rem !important;
+}
+.duo-btn-dark:hover:not(:disabled) {
+  background-color: #274452 !important;
+  border-color: #ffc800 #ffc800 #cca000 #ffc800 !important;
+}
+.duo-btn-dark:active:not(:disabled) {
+  border-bottom-width: 2px !important;
+}
+
+/* Duolingo 3D Card */
+.duo-card {
+  background-color: #203843;
+  border: 2px solid #2b4550;
+  border-bottom: 4px solid #16262e;
+  border-radius: 1.25rem;
+}
+
+/* ========================================================================= */
+/* UNIVERSAL DUOLINGO THEME OVERRIDES (Applies Across Every Component)      */
+/* ========================================================================= */
+
+/* 1. Base, Canvas & Card Backgrounds */
+.bg-\[\#022c22\],
+.bg-emerald-950,
+body {
+  background-color: var(--complex-bg, #131f24) !important;
+}
+
+.bg-\[\#022c22\]\/70,
+.bg-\[\#022c22\]\/80,
+.bg-\[\#022c22\]\/90,
+.bg-emerald-950\/80,
+.bg-emerald-950\/90 {
+  background-color: rgba(var(--complex-bg-rgb, 19, 31, 36), 0.92) !important;
+}
+
+.bg-\[\#064e3b\],
+.bg-emerald-900,
+.bg-\[\#011a14\],
+.bg-\[\#03362a\],
+.bg-\[\#044334\] {
+  background-color: var(--complex-card, #203843) !important;
+}
+
+.bg-\[\#064e3b\]\/95,
+.bg-\[\#064e3b\]\/90,
+.bg-emerald-900\/90 {
+  background-color: rgba(var(--complex-card-rgb, 32, 56, 67), 0.96) !important;
+}
+
+.bg-\[\#064e3b\]\/80,
+.bg-\[\#064e3b\]\/70,
+.bg-emerald-900\/80,
+.bg-emerald-900\/70 {
+  background-color: rgba(var(--complex-card-rgb, 32, 56, 67), 0.88) !important;
+}
+
+.bg-\[\#064e3b\]\/60,
+.bg-\[\#064e3b\]\/50,
+.bg-emerald-900\/50 {
+  background-color: rgba(var(--complex-card-rgb, 32, 56, 67), 0.65) !important;
+}
+
+.bg-\[\#064e3b\]\/40,
+.bg-\[\#064e3b\]\/30,
+.bg-\[\#064e3b\]\/20,
+.bg-\[\#064e3b\]\/10,
+.bg-emerald-900\/30,
+.bg-emerald-900\/20 {
+  background-color: rgba(var(--complex-card-rgb, 32, 56, 67), 0.38) !important;
+}
+
+.bg-emerald-800,
+.bg-emerald-700,
+.bg-\[\#065f46\] {
+  background-color: var(--complex-border, #2b4550) !important;
+}
+
+/* 2. Duolingo Tactile 3D Buttons for Primary Action Buttons (Yellow / Gold) */
+button.bg-\[\#fbbf24\],
+button[class*="bg-[#fbbf24]"],
+button.bg-amber-400,
+button.bg-amber-500,
+button[class*="bg-amber"],
+button[class*="from-amber"],
+button[class*="from-[#fbbf24]"],
+a.bg-\[\#fbbf24\],
+a[class*="bg-[#fbbf24]"],
+a[class*="from-amber"],
+a[class*="from-[#fbbf24]"],
+label[class*="from-amber"],
+label[class*="from-[#fbbf24]"],
+.btn-primary-theme {
+  background-color: var(--complex-accent, #ffc800) !important;
+  background-image: none !important;
+  color: #131f24 !important;
+  border-color: var(--complex-accent, #ffc800) var(--complex-accent, #ffc800) #e5a500 var(--complex-accent, #ffc800) !important;
+  border-width: 2px 2px 4px 2px !important;
+  border-style: solid !important;
+  border-radius: 1rem !important;
+  font-weight: 800 !important;
+  box-shadow: 0 4px 14px rgba(255, 200, 0, 0.28) !important;
+  transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+button.bg-\[\#fbbf24\]:hover,
+button[class*="bg-[#fbbf24]"]:hover,
+button.bg-amber-400:hover,
+button.bg-amber-500:hover,
+button[class*="bg-amber"]:hover,
+button[class*="from-amber"]:hover,
+button[class*="from-[#fbbf24]"]:hover,
+a[class*="from-amber"]:hover,
+a[class*="from-[#fbbf24]"]:hover,
+label[class*="from-amber"]:hover {
+  filter: brightness(1.06) !important;
+  box-shadow: 0 6px 20px rgba(255, 200, 0, 0.38) !important;
+}
+
+button.bg-\[\#fbbf24\]:active,
+button[class*="bg-[#fbbf24]"]:active,
+button.bg-amber-400:active,
+button.bg-amber-500:active,
+button[class*="bg-amber"]:active,
+button[class*="from-amber"]:active,
+button[class*="from-[#fbbf24]"]:active {
+  transform: translateY(2px) !important;
+  border-bottom-width: 2px !important;
+}
+
+button.bg-\[\#fbbf24\] svg,
+button[class*="bg-[#fbbf24]"] svg,
+button.bg-amber-400 svg,
+button.bg-amber-500 svg,
+button[class*="bg-amber"] svg,
+button[class*="from-amber"] svg,
+button[class*="from-[#fbbf24]"] svg,
+a[class*="from-amber"] svg,
+a[class*="from-[#fbbf24]"] svg,
+label[class*="from-amber"] svg,
+label[class*="from-[#fbbf24]"] svg {
+  color: #131f24 !important;
+  stroke: #131f24 !important;
+}
+
+/* Secondary Action Buttons (List items, actions, etc.) */
+button.bg-\[\#022c22\],
+button[class*="bg-[#022c22]"],
+button.bg-emerald-950,
+button[class*="bg-emerald-950"],
+button.bg-\[\#064e3b\],
+button[class*="bg-[#064e3b]"],
+button.bg-emerald-900,
+button[class*="bg-emerald-900"],
+button.bg-emerald-800,
+button[class*="bg-emerald-800"],
+a.bg-\[\#022c22\],
+a[class*="bg-[#022c22]"],
+a[class*="bg-[#064e3b]"] {
+  background-color: var(--complex-card, #203843) !important;
+  border-color: var(--complex-border, #2b4550) var(--complex-border, #2b4550) #16262e var(--complex-border, #2b4550) !important;
+  border-width: 2px 2px 4px 2px !important;
+  border-style: solid !important;
+  border-radius: 1rem !important;
+  color: var(--complex-text, #ffffff) !important;
+  transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+button.bg-\[\#022c22\]:hover,
+button[class*="bg-[#022c22]"]:hover,
+button.bg-emerald-950:hover,
+button[class*="bg-emerald-950"]:hover,
+button.bg-\[\#064e3b\]:hover,
+button[class*="bg-[#064e3b]"]:hover,
+button.bg-emerald-900:hover,
+button[class*="bg-emerald-900"]:hover,
+button.bg-emerald-800:hover {
+  background-color: #274452 !important;
+  border-color: var(--complex-accent, #ffc800) var(--complex-accent, #ffc800) #cca000 var(--complex-accent, #ffc800) !important;
+}
+
+button.bg-\[\#022c22\]:active,
+button[class*="bg-[#022c22]"]:active,
+button.bg-\[\#064e3b\]:active,
+button[class*="bg-[#064e3b]"]:active {
+  transform: translateY(2px) !important;
+  border-bottom-width: 2px !important;
+}
+
+/* 3. Duolingo Badges & Translucent Indicators */
+.bg-\[\#fbbf24\]\/20,
+.bg-\[\#fbbf24\]\/10,
+.bg-\[\#fbbf24\]\/30,
+.bg-amber-400\/20,
+.bg-amber-500\/20,
+.bg-emerald-500\/20,
+.bg-emerald-500\/10 {
+  background-color: rgba(var(--complex-accent-rgb, 255, 200, 0), 0.18) !important;
+  border-color: rgba(var(--complex-accent-rgb, 255, 200, 0), 0.35) !important;
+}
+
+.bg-\[\#fbbf24\]\/20 svg,
+.bg-\[\#fbbf24\]\/10 svg,
+.bg-\[\#fbbf24\]\/30 svg,
+.bg-amber-400\/20 svg,
+.bg-amber-500\/20 svg,
+.bg-emerald-500\/20 svg {
+  color: var(--complex-accent, #ffc800) !important;
+  stroke: currentColor !important;
+}
+
+/* 4. Text & Accent Colors */
+.text-\[\#fbbf24\],
+.text-amber-300,
+.text-amber-400,
+.text-amber-500,
+.text-\[\#f59e0b\] {
+  color: var(--complex-accent, #ffc800) !important;
+}
+
+.text-\[\#86efac\],
+.text-emerald-100,
+.text-emerald-200,
+.text-emerald-300 {
+  color: var(--complex-subtext, #ffd233) !important;
+}
+
+.text-\[\#86efac\]\/90,
+.text-\[\#86efac\]\/80,
+.text-\[\#86efac\]\/70 {
+  color: rgba(var(--complex-subtext-rgb, 255, 210, 51), 0.9) !important;
+}
+
+/* 5. Clean Duolingo Borders */
+[class*="border-emerald"],
+[class*="border-[#065f46]"],
+[class*="border-[#064e3b]"],
+[class*="border-[#011a14]"],
+[class*="border-[#03362a]"],
+[class*="border-[#044334]"] {
+  border-color: var(--complex-border, #2b4550) !important;
+}
+
+[class*="border-emerald-"][class*="/"],
+[class*="border-[#065f46]/"],
+[class*="border-[#064e3b]/"] {
+  border-color: rgba(var(--complex-border-rgb, 43, 69, 80), 0.7) !important;
+}
+
+[class*="border-[#fbbf24]"],
+[class*="border-amber"] {
+  border-color: var(--complex-accent, #ffc800) !important;
+}
+
+[class*="border-[#fbbf24]/"],
+[class*="border-amber-"][class*="/"] {
+  border-color: rgba(var(--complex-accent-rgb, 255, 200, 0), 0.5) !important;
+}
+
+/* 6. Dividers & Rings */
+.divide-\[\#065f46\],
+.divide-emerald-800 {
+  border-color: rgba(var(--complex-border-rgb, 43, 69, 80), 0.7) !important;
+}
+
+.ring-\[\#fbbf24\],
+.ring-amber-400 {
+  --tw-ring-color: var(--complex-accent, #ffc800) !important;
+}
+
+/* 7. Duolingo Gradients */
+[class*="bg-gradient-to-r"][class*="from-[#064e3b]"][class*="to-[#064e3b]"],
+[class*="bg-gradient-to-l"][class*="from-[#064e3b]"][class*="to-[#064e3b]"] {
+  background-image: linear-gradient(to right, var(--complex-card, #203843), var(--complex-primary, #131f24), var(--complex-card, #203843)) !important;
+}
+
+[class*="from-[#064e3b]"],
+[class*="from-emerald-900"],
+[class*="from-emerald-950"] {
+  --tw-gradient-from: var(--complex-card, #203843) var(--tw-gradient-from-position) !important;
+}
+
+[class*="to-[#064e3b]"],
+[class*="to-emerald-950"],
+[class*="to-emerald-900"] {
+  --tw-gradient-to: var(--complex-primary, #131f24) var(--tw-gradient-to-position) !important;
+}
+
+[class*="from-[#022c22]"] {
+  --tw-gradient-from: var(--complex-primary, #131f24) var(--tw-gradient-from-position) !important;
+}
+
+[class*="to-[#022c22]"] {
+  --tw-gradient-to: var(--complex-primary, #131f24) var(--tw-gradient-to-position) !important;
+}
+
+[class*="from-amber-400"],
+[class*="from-amber-500"] {
+  --tw-gradient-from: var(--complex-accent, #ffc800) var(--tw-gradient-from-position) !important;
+}
+
+[class*="to-amber-500"],
+[class*="to-amber-600"] {
+  --tw-gradient-to: #e5a500 var(--tw-gradient-to-position) !important;
+}
+
+/* 8. Forms, Inputs, Selects, and Textareas */
+input[type="text"],
+input[type="number"],
+input[type="search"],
+input[type="password"],
+textarea,
+select {
+  background-color: var(--complex-primary, #131f24) !important;
+  border: 2px solid var(--complex-border, #2b4550) !important;
+  border-radius: 0.875rem !important;
+  color: var(--complex-text, #ffffff) !important;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--complex-accent, #ffc800) !important;
+  box-shadow: 0 0 0 3px rgba(var(--complex-accent-rgb, 255, 200, 0), 0.25) !important;
+  outline: none !important;
+}
+
+select option {
+  background-color: var(--complex-primary, #131f24) !important;
+  color: #ffffff !important;
+}
+
+/* 9. Tables */
+table th {
+  background-color: #1b2e35 !important;
+  color: var(--complex-accent, #ffc800) !important;
+  border-color: var(--complex-border, #2b4550) !important;
+  font-weight: 800 !important;
+}
+
+table td {
+  border-color: rgba(var(--complex-border-rgb, 43, 69, 80), 0.5) !important;
+}
+
+table tr:hover {
+  background-color: rgba(var(--complex-border-rgb, 43, 69, 80), 0.3) !important;
+}
+
+/* 10. Horizontal Slider Utilities */
+.slider-horizontal {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.slider-horizontal::-webkit-scrollbar {
+  display: none;
+}
+
+/* 11. Shadows, Glows & Dot Patterns */
+.artistic-pattern {
+  background-color: var(--complex-bg, #131f24);
+  background-image: radial-gradient(circle at 2px 2px, rgba(255, 200, 0, 0.08) 1.5px, transparent 0);
+  background-size: 36px 36px;
+}
+
+.gold-glow {
+  box-shadow: 0 0 30px -5px rgba(255, 200, 0, 0.35);
+}
+
+.gold-glow-lg {
+  box-shadow: 0 20px 50px rgba(255, 200, 0, 0.3);
+}
+
+.islamic-glow {
+  box-shadow: 0 0 40px -10px rgba(255, 200, 0, 0.4);
+}
+
+/* 12. Duolingo Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--complex-primary, #131f24);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 200, 0, 0.35);
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 200, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--complex-accent, #ffc800);
+}
+
+::selection {
+  background-color: var(--complex-accent, #ffc800) !important;
+  color: #131f24 !important;
+}
+
+/* 13. Duolingo Shimmer & Animations */
+@keyframes shimmerWave {
+  0% {
+    transform: translateX(120%);
+  }
+  100% {
+    transform: translateX(-120%);
+  }
+}
+
+.shimmer-box {
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(32, 56, 67, 0.6);
+  border-radius: 1rem;
+}
+
+.shimmer-box::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(120%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 200, 0, 0.1) 25%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 200, 0, 0.1) 75%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmerWave 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  content: '';
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.85;
+    filter: drop-shadow(0 0 8px rgba(255, 200, 0, 0.6));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 16px rgba(255, 200, 0, 0.95));
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes complexThemeSinglePulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--complex-accent-rgb, 255, 200, 0), 0);
+    outline: 2px solid transparent;
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(var(--complex-accent-rgb, 255, 200, 0), 0.95),
+                0 0 35px rgba(var(--complex-primary-rgb, 19, 31, 36), 0.95);
+    outline: 3px solid var(--complex-accent, #ffc800);
+    background-color: rgba(var(--complex-accent-rgb, 255, 200, 0), 0.22) !important;
+    transform: scale(1.025);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--complex-accent-rgb, 255, 200, 0), 0);
+    outline: 2px solid transparent;
+    transform: scale(1);
+  }
+}
+
+.complex-theme-pulse-3 {
+  animation: complexThemeSinglePulse 0.8s ease-in-out 3;
+  position: relative;
+  z-index: 30;
+  border-color: var(--complex-accent, #ffc800) !important;
+  transition: all 0.3s ease;
+}
+
+/* ========================================================================= */
+/* Print & PDF Export Rules                                                  */
+/* ========================================================================= */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  #printable-quranic-document {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    margin: 0 auto !important;
+    box-shadow: none !important;
+    border: 2px solid #ffc800 !important;
+    max-width: 194mm !important;
+  }
+}

@@ -1,0 +1,168 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default deny all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 256;
+    }
+
+    // Test connection document for initial handshake
+    match /test/{testId} {
+      allow read, write: if true;
+    }
+
+    // Complexes collection (المجمعات القرآنية)
+    match /complexes/{complexId} {
+      allow read: if true;
+      allow create, update: if isValidId(complexId)
+        && request.resource.data.name is string;
+      allow delete: if isValidId(complexId);
+    }
+
+    // Halaqahs collection
+    match /halaqahs/{halaqahId} {
+      allow read: if true;
+      allow create, update: if isValidId(halaqahId)
+        && request.resource.data.name is string;
+      allow delete: if isValidId(halaqahId);
+    }
+
+    // Students collection - Read allowed for live portal, create/update/delete allowed
+    match /students/{studentId} {
+      allow read: if true;
+      allow create, update: if isValidId(studentId)
+        && request.resource.data.name is string;
+      allow delete: if isValidId(studentId);
+    }
+
+    // Attendance records
+    match /attendance/{attendanceId} {
+      allow read: if true;
+      allow create, update: if isValidId(attendanceId)
+        && request.resource.data.studentId is string;
+      allow delete: if isValidId(attendanceId);
+    }
+
+    // Evaluations
+    match /evaluations/{evaluationId} {
+      allow read: if true;
+      allow create, update: if isValidId(evaluationId)
+        && request.resource.data.studentId is string;
+      allow delete: if isValidId(evaluationId);
+    }
+
+    // Criteria
+    match /criteria/{criteriaId} {
+      allow read: if true;
+      allow create, update: if isValidId(criteriaId)
+        && request.resource.data.name is string;
+      allow delete: if isValidId(criteriaId);
+    }
+
+    // Settings
+    match /settings/{settingId} {
+      allow read: if true;
+      allow write: if isValidId(settingId);
+    }
+
+    // Teachers & Co-teachers collection
+    match /teachers/{teacherId} {
+      allow read: if true;
+      allow create, update: if isValidId(teacherId)
+        && request.resource.data.name is string;
+      allow delete: if isValidId(teacherId);
+    }
+
+    // Chats with Quran AI Coach
+    match /chats/{chatId} {
+      allow read: if true;
+      allow create, update: if isValidId(chatId);
+      allow delete: if isValidId(chatId);
+    }
+
+    // Behavioral Violations & Pedagogical Guidance
+    match /violations/{violationId} {
+      allow read: if true;
+      allow create, update: if isValidId(violationId)
+        && request.resource.data.studentId is string;
+      allow delete: if isValidId(violationId);
+    }
+
+    // Quran Exams & Quizzes
+    match /exams/{examId} {
+      allow read: if true;
+      allow create, update: if isValidId(examId)
+        && request.resource.data.title is string;
+      allow delete: if isValidId(examId);
+    }
+
+    // Exam Submissions & Corrections
+    match /exam_submissions/{submissionId} {
+      allow read: if true;
+      allow create, update: if isValidId(submissionId)
+        && request.resource.data.examId is string;
+      allow delete: if isValidId(submissionId);
+    }
+
+    // Surah Recordings
+    match /surah_recordings/{recordingId} {
+      allow read: if true;
+      allow create, update: if isValidId(recordingId);
+      allow delete: if isValidId(recordingId);
+    }
+
+    // Student Listening Logs
+    match /listening_logs/{logId} {
+      allow read: if true;
+      allow create, update: if isValidId(logId)
+        && request.resource.data.studentId is string;
+      allow delete: if isValidId(logId);
+    }
+
+    // Issued Certificates collection
+    match /certificates/{certificateId} {
+      allow read: if true;
+      allow create, update: if isValidId(certificateId)
+        && request.resource.data.studentId is string;
+      allow delete: if isValidId(certificateId);
+    }
+
+    // Teacher Attendance records
+    match /teacher_attendance/{attId} {
+      allow read: if true;
+      allow create, update: if isValidId(attId)
+        && request.resource.data.teacherId is string;
+      allow delete: if isValidId(attId);
+    }
+
+    // Teacher Shifts
+    match /teacher_shifts/{shiftId} {
+      allow read: if true;
+      allow create, update: if isValidId(shiftId)
+        && request.resource.data.name is string;
+      allow delete: if isValidId(shiftId);
+    }
+
+    // Mosques collection (الجوامع والمساجد المضافة)
+    match /mosques/{mosqueId} {
+      allow read: if true;
+      allow create, update: if isValidId(mosqueId)
+        && request.resource.data.name is string;
+      allow delete: if isValidId(mosqueId);
+    }
+
+    // Library Documents & Archive collection (مستندات المكتبة والأرشيف)
+    match /library_docs/{docId} {
+      allow read: if true;
+      allow create, update: if isValidId(docId)
+        && request.resource.data.title is string;
+      allow delete: if isValidId(docId);
+    }
+  }
+}
+

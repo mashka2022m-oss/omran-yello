@@ -1,0 +1,28 @@
+# Netlify Configuration for Omran Quran Platform
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--legacy-peer-deps"
+
+# Single Page Application (SPA) Fallback
+# Guarantees that /privacy, /login, /portal, and all routes load flawlessly without 404
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Security and performance headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
